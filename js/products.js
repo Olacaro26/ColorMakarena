@@ -2,8 +2,8 @@
    INVENTARIO (generado desde inventario_inicial_del_negocio.xlsx)
    stock = unidades iniciales − unidades vendidas
    Para agregar o editar productos, modifica esta lista.
-   category: "Belleza" | "Cuidado personal" | "Accesorios"
-   image: ruta de la foto (null = se muestra el logo)
+   category: "Belleza" | "Cuidado personal" | "Accesorios" | "Juguetería" | "Productos importados"
+   description: descripción visible del producto; image: ruta de la foto (null = se muestra el logo)
    ============================================================ */
 const PRODUCTS = [
   { id: 3,  name: "BB Cream con aplicador de esponja 30 g", ref: "",            category: "Belleza",          price: 7000,  stock: 10, image: "img/productos/p03.webp" },
@@ -43,5 +43,34 @@ const PRODUCTS = [
   { id: 40, name: "Lapicero de personajes (sin luz)",       ref: "",            category: "Accesorios",       price: 5000,  stock: 4,  image: "img/productos/p40.webp" },
   { id: 41, name: "Lapicero de capibara",                   ref: "",            category: "Accesorios",       price: 5000,  stock: 3,  image: "img/productos/p41.webp" },
   { id: 42, name: "Tarro de plástico Snoopy",               ref: "",            category: "Accesorios",       price: 17000, stock: 3,  image: "img/productos/p42.webp" },
-  { id: 43, name: "Organizador con sticker",                ref: "",            category: "Accesorios",       price: 25000, stock: 2,  image: null }
+  { id: 43, name: "Organizador con sticker",                ref: "",            category: "Accesorios",       price: 25000, stock: 2,  image: null },
+  { id: 100, name: "CARRO A CONTROL REMOTO", ref: "LBI20417", category: "Juguetería", subcategory: "", description: "Carro de juguete a control remoto, ideal para disfrutar momentos de diversión y carreras.", price: 15000, stock: 3, image: null },
+  { id: 101, name: "BALON # 2", ref: "26785", category: "Juguetería", subcategory: "", description: "Balón tamaño #2, práctico para juegos recreativos y actividades al aire libre.", price: 12000, stock: 2, image: null },
+  { id: 102, name: "BALON PLASTICO", ref: "20161", category: "Juguetería", subcategory: "", description: "Balón plástico liviano para juegos y diversión.", price: 3000, stock: 3, image: null },
+  { id: 103, name: "CONEJO CON LUZ Y MOVIMIENTO", ref: "27151", category: "Juguetería", subcategory: "", description: "Conejo de juguete con luces y movimiento, ideal para regalar y entretener.", price: 20000, stock: 3, image: null },
+  { id: 104, name: "TERMO CON POCILLOS", ref: "21381", category: "Juguetería", subcategory: "", description: "Termo con pocillos, práctico para compartir bebidas en salidas y reuniones.", price: 27000, stock: 3, image: null },
+  { id: 105, name: "TABLETA LCD 20*27CM", ref: "LBI20624", category: "Juguetería", subcategory: "", description: "Tableta LCD de escritura de 20 × 27 cm, útil para dibujar, escribir y jugar.", price: 20000, stock: 3, image: null },
+  { id: 106, name: "MULA", ref: "27123", category: "Juguetería", subcategory: "", description: "Figura de mula de juguete para juegos de imaginación.", price: 8000, stock: 3, image: null },
+  { id: 107, name: "LANZADOR HIDROGEL", ref: "27179", category: "Juguetería", subcategory: "", description: "Lanzador de hidrogel para juegos recreativos. Usar únicamente bajo supervisión adulta y siguiendo las indicaciones del fabricante.", price: 15000, stock: 3, image: null },
+  { id: 108, name: "BARBI SIRENA", ref: "LBI20368", category: "Juguetería", subcategory: "", description: "Muñeca estilo sirena para crear historias y juegos de imaginación.", price: 13000, stock: 3, image: null },
+  { id: 109, name: "BARBI ARTICUALDA", ref: "26912", category: "Juguetería", subcategory: "", description: "Muñeca articulada para crear diferentes poses y aventuras.", price: 13000, stock: 3, image: null },
+  { id: 110, name: "BARBI CON ACCESORIOS", ref: "26911", category: "Juguetería", subcategory: "", description: "Muñeca acompañada de accesorios para complementar el juego.", price: 15000, stock: 3, image: null },
+  { id: 111, name: "BARBI ARTICULADA CON TRENSA", ref: "26913", category: "Juguetería", subcategory: "", description: "Muñeca articulada con trenza para juegos de imaginación.", price: 13000, stock: 3, image: null },
+  { id: 112, name: "SET DE ACCESORIOS", ref: "27212", category: "Juguetería", subcategory: "", description: "Set de accesorios para complementar juegos y crear diferentes estilos.", price: 15000, stock: 3, image: null },
+  { id: 113, name: "COCHE CON MUÑECO", ref: "27186", category: "Juguetería", subcategory: "", description: "Coche de juguete con muñeco incluido para juegos de roles.", price: 30000, stock: 3, image: null },
+  { id: 114, name: "GUANTE LAZADOR", ref: "LBI20529", category: "Juguetería", subcategory: "", description: "Guante lanzador de juguete para actividades recreativas.", price: 18000, stock: 3, image: null },
+  { id: 115, name: "PATINETA", ref: "26926", category: "Juguetería", subcategory: "", description: "Patineta de juguete para juegos y entretenimiento.", price: 25000, stock: 3, image: null },
+  { id: 116, name: "PISTA DE CARRO", ref: "LBI20436", category: "Juguetería", subcategory: "", description: "Pista de juguete para organizar carreras y jugar con carros.", price: 20000, stock: 3, image: null },
+  { id: 117, name: "BURBUJERON EN BOLSA", ref: "27165", category: "Juguetería", subcategory: "", description: "Burbujero presentado en bolsa, ideal para crear burbujas y divertirse.", price: 15000, stock: 3, image: null },
+  { id: 118, name: "VELAS DE DESEO", ref: "", category: "Juguetería", subcategory: "", description: "Velas de deseo para celebraciones y momentos especiales.", price: 20000, stock: 10, image: null },
+  { id: 200, name: "Bolso Marc Jacobs", ref: "", category: "Productos importados", subcategory: "Bolsos", description: "Bolso Marc Jacobs", price: 160000, stock: 1, image: null },
+  { id: 201, name: "Bolso DKNY negro con cremallera", ref: "", category: "Productos importados", subcategory: "Bolsos", description: "Bolso DKNY negro con cremallera", price: 190000, stock: 1, image: null },
+  { id: 202, name: "Bolso New York en blanco y negro, elegante y versátil", ref: "", category: "Productos importados", subcategory: "Bolsos", description: "Bolso New York en blanco y negro, elegante y versátil", price: 200000, stock: 1, image: null },
+  { id: 203, name: "Bolso cruzado Tommy Hilfiger, elegante y práctico", ref: "", category: "Productos importados", subcategory: "Bolsos", description: "Bolso cruzado Tommy Hilfiger, elegante y práctico", price: 130000, stock: 1, image: null },
+  { id: 204, name: "Bolso Guess crema", ref: "", category: "Productos importados", subcategory: "Bolsos", description: "Bolso Guess crema", price: 250000, stock: 1, image: null },
+  { id: 205, name: "Bolso beige, Tommy Hilfiger", ref: "", category: "Productos importados", subcategory: "Bolsos", description: "Bolso beige, Tommy Hilfiger", price: 170000, stock: 1, image: null },
+  { id: 206, name: "Bolso Lucky verde", ref: "", category: "Productos importados", subcategory: "Bolsos", description: "Bolso Lucky verde", price: 120000, stock: 1, image: null },
+  { id: 207, name: "Mini mochila Fila", ref: "", category: "Productos importados", subcategory: "Bolsos", description: "Mini mochila Fila", price: 70000, stock: 1, image: null },
+  { id: 208, name: "Clutch vinotinto Daisy", ref: "", category: "Productos importados", subcategory: "Bolsos", description: "Clutch vinotinto Daisy", price: 100000, stock: 1, image: null },
+  { id: 209, name: "Mochila Adidas rosa", ref: "", category: "Productos importados", subcategory: "Bolsos", description: "Mochila Adidas rosa", price: 120000, stock: 1, image: null }
 ];

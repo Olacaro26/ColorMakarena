@@ -22,7 +22,7 @@ CÓMO ACTUALIZAR EL INVENTARIO
 - Edita js/products.js: cada línea es un producto (name, category, price, stock, image).
 - Para agregar un producto: copia una línea, cambia el id (único) y pon su foto en img/productos/.
 - Para marcar algo como agotado: pon stock: 0.
-- Categorías: "Belleza", "Cuidado personal" o "Accesorios".
+- Categorías: "Belleza", "Cuidado personal", "Accesorios", "Juguetería" y "Productos importados".
 
 CARRITO Y LOCALSTORAGE
 - El carrito (y el nombre/nota del cliente) se guardan en el navegador con localStorage,
@@ -34,3 +34,10 @@ CARRITO Y LOCALSTORAGE
 NOTAS
 - El stock mostrado = unidades iniciales − unidades vendidas del Excel.
 - La página usa fuentes de Google Fonts (Playfair Display y Jost); si no hay internet usa fuentes similares.
+
+
+PRODUCTOS NUEVOS
+- Se agregaron 19 productos de juguetería y 10 bolsos importados desde PEDIDO JUGETERIA.xlsx.
+- Los precios de venta y unidades se tomaron de las columnas correspondientes del Excel.
+- Las fotos de estos 29 productos no estaban incluidas en el Excel ni en el ZIP; mientras se reciben, la tienda muestra el logo como imagen provisional. Para publicar el catálogo completo, agrega las fotos en img/productos/ y asigna sus rutas en js/products.js.
+- El WhatsApp de pedidos está configurado como 573507119005 (Colombia + 3507119005).
