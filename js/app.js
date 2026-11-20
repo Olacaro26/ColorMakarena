@@ -202,12 +202,25 @@
   });
 
   // Datos del cliente (también en localStorage)
-  const nameEl = $("#customerName"), noteEl = $("#customerNote");
-  const saved = store.get(CUSTOMER_STORAGE_KEY, { name: "", note: "" });
-  nameEl.value = saved.name || ""; noteEl.value = saved.note || "";
-  const saveCustomer = () => store.set(CUSTOMER_STORAGE_KEY, { name: nameEl.value, note: noteEl.value });
-  nameEl.addEventListener("input", saveCustomer);
-  noteEl.addEventListener("input", saveCustomer);
+  const nameEl = $("#customerName");
+  const phoneEl = $("#customerPhone");
+  const cityEl = $("#customerCity");
+  const addressEl = $("#customerAddress");
+  const noteEl = $("#customerNote");
+  const saved = store.get(CUSTOMER_STORAGE_KEY, { name: "", phone: "", city: "", address: "", note: "" });
+  nameEl.value = saved.name || "";
+  phoneEl.value = saved.phone || "";
+  cityEl.value = saved.city || "";
+  addressEl.value = saved.address || "";
+  noteEl.value = saved.note || "";
+  const saveCustomer = () => store.set(CUSTOMER_STORAGE_KEY, {
+    name: nameEl.value,
+    phone: phoneEl.value,
+    city: cityEl.value,
+    address: addressEl.value,
+    note: noteEl.value
+  });
+  [nameEl, phoneEl, cityEl, addressEl, noteEl].forEach((field) => field.addEventListener("input", saveCustomer));
 
   // Abrir / cerrar el carrito
   const drawer = $("#drawer"), overlay = $("#overlay");
@@ -232,7 +245,13 @@
       lines.push(`${i + 1}. ${p.name} x${q} — ${money(p.price * q)}`);
     });
     lines.push("", `*Total: ${money(cartTotal())}*`);
-    if (nameEl.value.trim()) lines.push("", `Nombre: ${nameEl.value.trim()}`);
+    lines.push(
+      "",
+      `Nombre: ${nameEl.value.trim()}`,
+      `Celular: ${phoneEl.value.trim()}`,
+      `Ciudad: ${cityEl.value.trim()}`,
+      `Dirección: ${addressEl.value.trim()}`
+    );
     if (noteEl.value.trim()) lines.push(`Nota: ${noteEl.value.trim()}`);
     lines.push("", "¡Gracias! 💖");
     return lines.join("\n");
@@ -240,6 +259,13 @@
 
   $("#sendWhatsApp").addEventListener("click", () => {
     if (!cartCount()) { toast("Tu carrito está vacío"); return; }
+    const requiredFields = [nameEl, phoneEl, cityEl, addressEl];
+    const missingField = requiredFields.find((field) => !field.value.trim());
+    if (missingField) {
+      toast("Completa nombre, celular, ciudad y dirección");
+      missingField.focus();
+      return;
+    }
     if (!/^\d{10,15}$/.test(WHATSAPP_NUMBER) || WHATSAPP_NUMBER === "573000000000") {
       alert("Falta configurar el número de WhatsApp.\n\nAbre js/config.js y cambia WHATSAPP_NUMBER por tu número (ej: 573001234567).");
       return;
