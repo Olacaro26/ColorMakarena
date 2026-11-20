@@ -81,8 +81,11 @@
     <div class="drawer-body" id="cartItems"></div>
     <div class="drawer-foot" id="cartFoot">
       <div class="customer">
-        <input type="text" id="customerName" placeholder="Tu nombre (opcional)" autocomplete="name">
-        <textarea id="customerNote" rows="2" placeholder="Nota para el pedido (opcional)"></textarea>
+        <input type="text" id="customerName" placeholder="Nombre" aria-label="Nombre" autocomplete="name" required>
+        <input type="tel" id="customerPhone" placeholder="Número de celular" aria-label="Número de celular" autocomplete="tel" inputmode="tel" required>
+        <input type="text" id="customerCity" placeholder="Ciudad" aria-label="Ciudad" autocomplete="address-level2" required>
+        <input type="text" id="customerAddress" placeholder="Dirección" aria-label="Dirección" autocomplete="street-address" required>
+        <textarea id="customerNote" rows="2" placeholder="Nota para el pedido (opcional)" aria-label="Nota para el pedido (opcional)"></textarea>
       </div>
       <div class="total-row"><span>Total</span><strong id="cartTotal">$0</strong></div>
       <button class="btn btn-wa" id="sendWhatsApp">

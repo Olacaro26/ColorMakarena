@@ -108,7 +108,7 @@ button{font-family:inherit;cursor:pointer}
 .drawer.open{transform:none}
 .drawer-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:2px solid transparent;border-image:var(--gold-grad) 1}
 .drawer-head h2{font-family:var(--serif);font-size:1.4rem}
-.drawer-body{flex:1;overflow-y:auto;padding:12px 20px}
+.drawer-body{flex:1;min-height:0;overflow-y:auto;padding:12px 20px}
 .cart-empty{text-align:center;color:var(--muted);padding:50px 10px}
 .cart-empty img{width:110px;margin:0 auto 14px;border-radius:50%;opacity:.9}
 .cart-item{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--blush-2)}
@@ -121,7 +121,7 @@ button{font-family:inherit;cursor:pointer}
 .ci-sub{font-weight:600;color:var(--wine);font-size:.95rem;text-align:right}
 .ci-remove{background:none;border:0;color:var(--muted);font-size:.78rem;text-decoration:underline;margin-top:4px}
 .ci-remove:hover{color:var(--rose-deep)}
-.drawer-foot{padding:16px 20px 20px;border-top:1px solid var(--blush-2);background:var(--blush)}
+.drawer-foot{flex:0 0 auto;max-height:62vh;overflow-y:auto;padding:16px 20px 20px;border-top:1px solid var(--blush-2);background:var(--blush)}
 .customer{display:grid;gap:8px;margin-bottom:12px}
 .customer input,.customer textarea{width:100%;font:inherit;font-size:.92rem;border:1.5px solid var(--blush-2);background:#fff;border-radius:12px;padding:10px 14px;outline:none;resize:none}
 .customer input:focus,.customer textarea:focus{border-color:var(--rose)}
