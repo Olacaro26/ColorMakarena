@@ -1,0 +1,14 @@
+# Actualización del catálogo ColorMakarena
+
+Esta rama organiza el catálogo de juguetería y bolsos importados.
+
+## Cambios
+- Se eliminaron registros duplicados de juguetes y bolsos.
+- Se conservaron los IDs originales del catálogo: juguetes 100–118 y bolsos 200–209.
+- Los bolsos se agrupan en la categoría **Productos importados**, subcategoría **Bolsos**.
+- Se corrigieron nombres y descripciones del catálogo.
+- Se agregó **Productos importados** a las categorías destacadas de la portada.
+- El número de pedidos por WhatsApp se conserva en `js/config.js` como `573507119005`.
+
+## Imágenes
+Las 19 fotos de juguetes y las 10 fotos de bolsos están en `img/productos/` y se encuentran vinculadas a sus registros correspondientes en `js/products.js`.
