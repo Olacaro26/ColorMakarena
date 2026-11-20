@@ -11,4 +11,4 @@ Esta rama organiza el catálogo de juguetería y bolsos importados.
 - El número de pedidos por WhatsApp se conserva en `js/config.js` como `573507119005`.
 
 ## Imágenes
-El paquete ZIP corregido que acompaña esta actualización contiene las imágenes optimizadas de los 19 juguetes y 10 bolsos en `img/productos/`. Los nuevos registros de esta rama usan la imagen alternativa de la tienda mientras se incorporan esos archivos binarios al repositorio.
+Las 19 fotos de juguetes y las 10 fotos de bolsos están en `img/productos/` y se encuentran vinculadas a sus registros correspondientes en `js/products.js`.
