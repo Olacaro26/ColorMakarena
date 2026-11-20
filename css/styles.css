@@ -168,3 +168,20 @@ button{font-family:inherit;cursor:pointer}
 /* Descripciones para fichas del catálogo */
 .card-description{font-size:.84rem;line-height:1.45;color:var(--muted);margin:0 0 3px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:3.65em}
 .modal-description{font-size:.95rem;line-height:1.6;color:var(--muted)}
+
+/* Ajuste de fotografías para bolsos importados:
+   conserva el formato cuadrado de las tarjetas sin recortar el producto. */
+.card-img img[src*="bolso_"]{
+  object-fit:contain;
+  object-position:center;
+  padding:12px;
+  background:#fff;
+}
+.card:hover .card-img img[src*="bolso_"]{
+  transform:none;
+}
+@media(max-width:520px){
+  .card-img img[src*="bolso_"]{
+    padding:8px;
+  }
+}
