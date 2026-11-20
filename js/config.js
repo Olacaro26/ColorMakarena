@@ -5,7 +5,7 @@
 // 👉 CAMBIA ESTE NÚMERO por el WhatsApp de tu negocio.
 // Formato: código de país + número, sin "+", espacios ni guiones.
 // Colombia = 57. Ejemplo: 573001234567
-const WHATSAPP_NUMBER = "573507119005";
+const WHATSAPP_NUMBER = "573507119005"; // 57 (Colombia) + 3507119005
 
 const STORE_NAME = "ColorMakarena";
 

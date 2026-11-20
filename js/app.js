@@ -48,7 +48,7 @@
   // ---------- Catálogo ----------
   const grid = $("#productGrid");
   const chipsEl = $("#chips");
-  const categories = ["Todos", "Belleza", "Cuidado personal", "Accesorios"];
+  const categories = ["Todos", "Belleza", "Cuidado personal", "Accesorios", "Juguetería", "Productos importados"];
 
   function renderChips() {
     chipsEl.innerHTML = categories.map((c) =>
@@ -60,7 +60,7 @@
     const q = norm(state.query.trim());
     let list = PRODUCTS.filter((p) =>
       (state.category === "Todos" || p.category === state.category) &&
-      (!q || norm(p.name + " " + p.ref + " " + p.category).includes(q))
+      (!q || norm(p.name + " " + p.ref + " " + p.category + " " + (p.subcategory || "") + " " + (p.description || "")).includes(q))
     );
     if (state.sort === "price-asc") list.sort((a, b) => a.price - b.price);
     else if (state.sort === "price-desc") list.sort((a, b) => b.price - a.price);
@@ -83,6 +83,7 @@
       <div class="card-body">
         <span class="tag">${esc(p.category)}</span>
         <h3 class="card-title">${esc(p.name)}</h3>
+        <p class="card-description">${esc(p.description || "")}</p>
         <p class="price">${money(p.price)}</p>
         <div class="card-actions">
           <div class="qty" aria-label="Cantidad">
@@ -256,7 +257,8 @@
     img.src = p.image || LOGO; img.alt = p.name; img.className = p.image ? "" : "placeholder";
     $("#modalCat").textContent = p.category;
     $("#modalTitle").textContent = p.name;
-    $("#modalRef").textContent = p.ref ? "Ref. " + p.ref : "";
+    $("#modalRef").textContent = p.subcategory || (p.ref ? "Ref. " + p.ref : "");
+    $("#modalDescription").textContent = p.description || "";
     $("#modalPrice").textContent = money(p.price);
     const st = $("#modalStock");
     st.textContent = p.stock <= 0 ? "Agotado" : p.stock <= LOW_STOCK_THRESHOLD ? `¡Últimas ${p.stock} unidades!` : `${p.stock} unidades disponibles`;
