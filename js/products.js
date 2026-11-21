@@ -35,7 +35,7 @@ const PRODUCTS = [
   { id: 29, name: "Sérum de vitamina C con ácido hialurónico Bioaqua", ref: "", category: "Cuidado personal", price: 5000, stock: 5, image: "img/productos/p29.webp" },
   { id: 30, name: "Set de mini brochas x 6",                ref: "CTG-1002",    category: "Belleza",          price: 10000, stock: 4,  image: "img/productos/p30.webp" },
   { id: 31, name: "Tinta de labios Gege Bear osito",        ref: "",            category: "Belleza",          price: 3000,  stock: 15, image: "img/productos/p31.webp" },
-  { id: 32, name: "Mini Bloom Fresh (paquete x 2)",         ref: "",            category: "Cuidado personal", price: 1500,  stock: 38, image: "img/productos/p32.webp" },
+  { id: 32, name: "Mini Bloom Fresh",         ref: "",            category: "Cuidado personal", price: 1500,  stock: 38, image: "img/productos/p32.webp" },
   { id: 36, name: "Llavero de peluche rosado",              ref: "",            category: "Accesorios",       price: 10000, stock: 6,  image: "img/productos/p36.webp" },
   { id: 37, name: "Llavero de peluche con gafas",           ref: "",            category: "Accesorios",       price: 10000, stock: 4,  image: "img/productos/p37.webp" },
   { id: 38, name: "Tarro de plástico Stitch",               ref: "",            category: "Accesorios",       price: 17000, stock: 1,  image: "img/productos/p38.webp" },
