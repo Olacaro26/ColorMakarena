@@ -30,13 +30,15 @@
   // cart: { [idProducto]: cantidad }
   let cart = sanitizeCart(store.get(CART_STORAGE_KEY, {}));
   const state = { category: "Todos", query: "", sort: "default", draftQty: {} };
+  // Si el inventario no fue informado, se permite agregar productos sin afirmar existencias.
+  const stockLimit = (p) => Number.isFinite(p.stock) ? Math.max(0, p.stock) : Number.MAX_SAFE_INTEGER;
 
   function sanitizeCart(raw) {
     const clean = {};
     if (!raw || typeof raw !== "object") return clean;
     for (const [id, q] of Object.entries(raw)) {
       const p = byId.get(Number(id));
-      const qty = Math.min(Math.floor(Number(q)) || 0, p ? p.stock : 0);
+      const qty = Math.min(Math.floor(Number(q)) || 0, p ? stockLimit(p) : 0);
       if (p && qty > 0) clean[id] = qty;
     }
     return clean;
@@ -48,7 +50,7 @@
   // ---------- Catálogo ----------
   const grid = $("#productGrid");
   const chipsEl = $("#chips");
-  const categories = ["Todos", "Belleza", "Cuidado personal", "Accesorios", "Juguetería", "Productos importados"];
+  const categories = ["Todos", "Belleza", "Cuidado personal", "Accesorios", "Juguetería", "Productos importados", "Pijamas"];
 
   function renderChips() {
     chipsEl.innerHTML = categories.map((c) =>
@@ -69,10 +71,11 @@
   }
 
   function cardHTML(p) {
-    const out = p.stock <= 0;
-    const low = !out && p.stock <= LOW_STOCK_THRESHOLD;
+    const knownStock = Number.isFinite(p.stock);
+    const out = knownStock && p.stock <= 0;
+    const low = knownStock && !out && p.stock <= LOW_STOCK_THRESHOLD;
     const inCart = cart[p.id] || 0;
-    const q = Math.max(1, Math.min(state.draftQty[p.id] || 1, p.stock || 1));
+    const q = Math.max(1, Math.min(state.draftQty[p.id] || 1, stockLimit(p)));
     const img = p.image || LOGO;
     return `
     <article class="card" data-id="${p.id}">
@@ -119,7 +122,7 @@
     const id = Number(btn.closest(".card").dataset.id);
     const p = byId.get(id);
     const action = btn.dataset.action;
-    if (action === "inc") { state.draftQty[id] = Math.min((state.draftQty[id] || 1) + 1, p.stock); refreshCard(id); }
+    if (action === "inc") { state.draftQty[id] = Math.min((state.draftQty[id] || 1) + 1, stockLimit(p)); refreshCard(id); }
     else if (action === "dec") { state.draftQty[id] = Math.max((state.draftQty[id] || 1) - 1, 1); refreshCard(id); }
     else if (action === "add") { addToCart(id, state.draftQty[id] || 1); state.draftQty[id] = 1; refreshCard(id); }
     else if (action === "zoom") openModal(id);
@@ -138,8 +141,11 @@
   function addToCart(id, qty) {
     const p = byId.get(id);
     const current = cart[id] || 0;
-    const next = Math.min(current + qty, p.stock);
-    if (next === current) { toast(`Solo hay ${p.stock} unidad${p.stock === 1 ? "" : "es"} disponible${p.stock === 1 ? "" : "s"} 🌸`); return; }
+    const next = Math.min(current + qty, stockLimit(p));
+    if (next === current) {
+      if (Number.isFinite(p.stock)) toast(`Solo hay ${p.stock} unidad${p.stock === 1 ? "" : "es"} disponible${p.stock === 1 ? "" : "s"} 🌸`);
+      return;
+    }
     cart[id] = next;
     saveCart(); renderCart();
     toast(`Agregado: ${p.name}`);
@@ -149,7 +155,10 @@
   function setQty(id, qty) {
     const p = byId.get(id);
     if (qty <= 0) delete cart[id];
-    else if (qty > p.stock) { cart[id] = p.stock; toast(`Máximo disponible: ${p.stock}`); }
+    else if (qty > stockLimit(p)) {
+      cart[id] = stockLimit(p);
+      if (Number.isFinite(p.stock)) toast(`Máximo disponible: ${p.stock}`);
+    }
     else cart[id] = qty;
     saveCart(); renderCart(); refreshCard(id);
   }
@@ -287,9 +296,15 @@
     $("#modalDescription").textContent = p.description || "";
     $("#modalPrice").textContent = money(p.price);
     const st = $("#modalStock");
-    st.textContent = p.stock <= 0 ? "Agotado" : p.stock <= LOW_STOCK_THRESHOLD ? `¡Últimas ${p.stock} unidades!` : `${p.stock} unidades disponibles`;
-    st.className = "stock" + (p.stock <= LOW_STOCK_THRESHOLD ? " low" : "");
-    $("#modalAdd").disabled = p.stock <= 0;
+    st.textContent = !Number.isFinite(p.stock)
+      ? "Disponibilidad por confirmar"
+      : p.stock <= 0
+        ? "Agotado"
+        : p.stock <= LOW_STOCK_THRESHOLD
+          ? `¡Últimas ${p.stock} unidades!`
+          : `${p.stock} unidades disponibles`;
+    st.className = "stock" + (Number.isFinite(p.stock) && p.stock <= LOW_STOCK_THRESHOLD ? " low" : "");
+    $("#modalAdd").disabled = Number.isFinite(p.stock) && p.stock <= 0;
     modal.hidden = false; document.body.style.overflow = "hidden";
   }
   function closeModal() { modal.hidden = true; document.body.style.overflow = ""; }
