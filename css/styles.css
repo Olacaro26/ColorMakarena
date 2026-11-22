@@ -185,3 +185,15 @@ button{font-family:inherit;cursor:pointer}
     padding:8px;
   }
 }
+
+
+/* Fotografías de pijamas: mostrar la prenda completa en la tarjeta cuadrada. */
+.card-img img[src*="pijama_"]{
+  object-fit:contain;
+  object-position:center;
+  padding:8px;
+  background:#fff;
+}
+.card:hover .card-img img[src*="pijama_"]{
+  transform:none;
+}
