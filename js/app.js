@@ -27,11 +27,12 @@
   };
 
   // ---------- Estado ----------
+  // Si el inventario no fue informado, se permite agregar productos sin afirmar existencias.
+  // Debe declararse antes de inicializar el carrito porque sanitizeCart la utiliza.
+  const stockLimit = (p) => Number.isFinite(p.stock) ? Math.max(0, p.stock) : Number.MAX_SAFE_INTEGER;
   // cart: { [idProducto]: cantidad }
   let cart = sanitizeCart(store.get(CART_STORAGE_KEY, {}));
   const state = { category: "Todos", query: "", sort: "default", draftQty: {} };
-  // Si el inventario no fue informado, se permite agregar productos sin afirmar existencias.
-  const stockLimit = (p) => Number.isFinite(p.stock) ? Math.max(0, p.stock) : Number.MAX_SAFE_INTEGER;
 
   function sanitizeCart(raw) {
     const clean = {};
