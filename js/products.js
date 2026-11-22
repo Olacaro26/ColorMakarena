@@ -2,7 +2,7 @@
    INVENTARIO (generado desde inventario_inicial_del_negocio.xlsx)
    stock = unidades iniciales − unidades vendidas
    Para agregar o editar productos, modifica esta lista.
-   category: "Belleza" | "Cuidado personal" | "Accesorios" | "Juguetería" | "Productos importados"
+   category: "Belleza" | "Cuidado personal" | "Accesorios" | "Juguetería" | "Productos importados" | "Pijamas"
    description: descripción visible del producto; image: ruta de la foto (null = se muestra el logo)
    ============================================================ */
 const PRODUCTS = [
@@ -73,4 +73,12 @@ const PRODUCTS = [
   { id: 207, name: "Mini mochila Fila", ref: "", category: "Productos importados", subcategory: "Bolsos", description: "Mini mochila Fila", price: 70000, stock: 1, image: "img/productos/bolso_08.webp" },
   { id: 208, name: "Clutch vinotinto Daisy", ref: "", category: "Productos importados", subcategory: "Bolsos", description: "Clutch vinotinto Daisy", price: 100000, stock: 1, image: "img/productos/bolso_09.webp" },
   { id: 209, name: "Mochila Adidas rosa", ref: "", category: "Productos importados", subcategory: "Bolsos", description: "Mochila Adidas rosa", price: 120000, stock: 1, image: "img/productos/bolso_10.webp" },
+  { id: 210, name: "Pijama short satín Snoopy · Talla M", ref: "", category: "Pijamas", description: "Pijama de short en satín estampado de Snoopy. Talla M.", price: 32000, stock: null, image: "img/productos/pijama_01.webp" },
+  { id: 211, name: "Pijama short satín oso · Talla L", ref: "", category: "Pijamas", description: "Pijama de short en satín estampado de oso. Talla L.", price: 32000, stock: null, image: "img/productos/pijama_02.webp" },
+  { id: 212, name: "Pijama short satín corazones · Talla S", ref: "", category: "Pijamas", description: "Pijama de short en satín estampado de corazones. Talla S.", price: 32000, stock: null, image: "img/productos/pijama_03.webp" },
+  { id: 213, name: "Pijama short estampado navideño", ref: "", category: "Pijamas", description: "Pijama de short con estampado navideño. Tallas S, M y L.", price: 28000, stock: null, image: "img/productos/pijama_04.webp" },
+  { id: 214, name: "Bata seducción corazones · Talla L", ref: "", category: "Pijamas", description: "Bata seducción con estampado de corazones. Talla L.", price: 28000, stock: null, image: "img/productos/pijama_05.webp" },
+  { id: 215, name: "Bata seducción moños · Talla S", ref: "", category: "Pijamas", description: "Bata seducción con estampado de moños. Talla S.", price: 28000, stock: null, image: "img/productos/pijama_06.webp" },
+  { id: 216, name: "Bata seducción corazones · Talla S", ref: "", category: "Pijamas", description: "Bata seducción con estampado de corazones. Talla S.", price: 28000, stock: null, image: "img/productos/pijama_07.webp" },
+  { id: 217, name: "Bata seducción rosas · Talla L", ref: "", category: "Pijamas", description: "Bata seducción con estampado de rosas. Talla L.", price: 28000, stock: null, image: "img/productos/pijama_08.webp" },
 ];
