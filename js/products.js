@@ -11,7 +11,7 @@ const PRODUCTS = [
   { id: 5,  name: "Emulsión anti-edad ácido hialurónico Sadoer", ref: "SD-05847", category: "Cuidado personal", price: 6000, stock: 10, image: "img/productos/p05.webp" },
   { id: 6,  name: "Gel de cejas tattoo Olibolla",           ref: "LA-E209",     category: "Belleza",          price: 6000,  stock: 9,  image: "img/productos/p06.webp" },
   { id: 7,  name: "Peinilla",                               ref: "855A",        category: "Accesorios",       price: 3500,  stock: 20, image: "img/productos/p07.webp" },
-  { id: 8,  name: "Pinza para cabello (1 unidad)",          ref: "JA0678",      category: "Accesorios",       price: 3000,  stock: 9,  image: "img/productos/p08.webp" },
+  { id: 8,  name: "Pinza para cabello",          ref: "JA0678",      category: "Accesorios",       price: 3000,  stock: 9,  image: "img/productos/p08.webp" },
   { id: 9,  name: "Pinza para cabello (1 unidad)",          ref: "JA0676",      category: "Accesorios",       price: 3000,  stock: 10, image: "img/productos/p09.webp" },
   { id: 10, name: "Rubor 2 en 1 Olibolla",                  ref: "",            category: "Belleza",          price: 7000,  stock: 10, image: "img/productos/p10.webp" },
   { id: 11, name: "Set de brochas x 5",                     ref: "LDC003",      category: "Belleza",          price: 12000, stock: 10, image: "img/productos/p11.webp" },
